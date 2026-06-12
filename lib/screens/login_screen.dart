@@ -3,6 +3,7 @@ import '../widgets/glass_card.dart';
 import '../widgets/neon_button.dart';
 import '../theme/styles.dart';
 import '../theme/colors.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
