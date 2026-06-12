@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              // ЧАСЫ
+              // ===== ЧАСЫ + ДАТА =====
               Text(
                 _formattedTime(),
                 style: AppTextStyles.titleLarge,
@@ -27,9 +27,9 @@ class HomeScreen extends StatelessWidget {
                 style: AppTextStyles.subtitle,
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 24),
 
-              // КАЛЕНДАРЬ
+              // ===== КАЛЕНДАРЬ (ГОРИЗОНТАЛЬНЫЙ) =====
               SizedBox(
                 height: 90,
                 child: ListView(
@@ -60,108 +60,72 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 24),
 
-              // ПОГОДА
-              const GlassCard(
-                height: 140,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              // ===== ПОГОДА =====
+              GlassCard(
+                height: 150,
+                child: Row(
                   children: [
-                    Text("Hava", style: AppTextStyles.cardTitle),
-                    SizedBox(height: 8),
-                    Text("Bakı • 28°C", style: AppTextStyles.cardValue),
-                    SizedBox(height: 4),
-                    Text("Külək: 12 km/h", style: AppTextStyles.cardSubtitle),
-                    Text("Rütubət: 62%", style: AppTextStyles.cardSubtitle),
+                    const Icon(
+                      Icons.wb_sunny_rounded,
+                      color: Colors.amber,
+                      size: 40,
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text("Bakı", style: AppTextStyles.cardTitle),
+                          SizedBox(height: 4),
+                          Text("28°C • Günəşli", style: AppTextStyles.cardValue),
+                          SizedBox(height: 4),
+                          Text("Külək: 12 km/h", style: AppTextStyles.cardSubtitle),
+                          Text("Rütubət: 62%", style: AppTextStyles.cardSubtitle),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 24),
 
-              // КАРУСЕЛЬ СЕМЬИ
-              Text("Ailə üzvləri", style: AppTextStyles.cardTitle),
+              // ===== СЕМЬЯ (КАРУСЕЛЬ) =====
+              const Text("Ailə üzvləri", style: AppTextStyles.cardTitle),
               const SizedBox(height: 12),
 
               SizedBox(
-                height: 140,
+                height: 170,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    _familyCard("Ata", "Online"),
-                    _familyCard("Ana", "Offline"),
-                    _familyCard("Qardaş", "Online"),
+                    _familyCard(
+                      name: "Ata",
+                      status: "Online",
+                    ),
+                    _familyCard(
+                      name: "Ana",
+                      status: "Offline",
+                    ),
+                    _familyCard(
+                      name: "Qardaş",
+                      status: "Online",
+                    ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: 24),
 
-              // ŞAQQULİ
-              const GlassCard(
-                height: 160,
+              // ===== ŞAQQULİ (ПОКА ПРОСТАЯ КАРТОЧКА-ЗАГЛУШКА) =====
+              GlassCard(
+                height: 150,
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      radius: 40,
+                    const CircleAvatar(
+                      radius: 35,
                       backgroundColor: Colors.white24,
-                      child: Icon(Icons.person, size: 45, color: Colors.white),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: Text(
-                        "Ay bala, nə lazımdır?",
-                        style: AppTextStyles.cardValue,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  // ====== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ======
-
-  static String _formattedTime() {
-    final now = DateTime.now();
-    return "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}";
-  }
-
-  static String _formattedDate() {
-    final now = DateTime.now();
-    return "${now.day}.${now.month}.${now.year}";
-  }
-
-  static String _weekday(int i) {
-    const days = ["B.E", "Ç.A", "Ç", "C.A", "C", "Ş", "B"];
-    return days[i];
-  }
-
-  Widget _familyCard(String name, String status) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 12),
-      child: GlassCard(
-        width: 120,
-        height: 140,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.white24,
-              child: Icon(Icons.person, color: Colors.white),
-            ),
-            const SizedBox(height: 10),
-            Text(name, style: AppTextStyles.cardValue),
-            Text(status, style: AppTextStyles.cardSubtitle),
-          ],
-        ),
-      ),
-    );
-  }
-}
+                     
