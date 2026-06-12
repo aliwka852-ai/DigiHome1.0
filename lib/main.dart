@@ -18,7 +18,7 @@ class DigiHomeApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const SplashScreen(),
+      home: const RootScreen(),
     );
   }
 }
