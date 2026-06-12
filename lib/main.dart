@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 import 'theme/colors.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class DigiHomeApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
