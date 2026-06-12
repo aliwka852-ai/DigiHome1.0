@@ -75,7 +75,10 @@ class LoginScreen extends StatelessWidget {
                 NeonButton(
                   text: "LOGIN",
                   onTap: () {
-                    // Пока пусто — позже добавим переход
+									  Navigator.push(
+					            context,
+									    MaterialPageRoute(builder: (_) => const HomeScreen()),
+									  );
                   },
                 ),
               ],
